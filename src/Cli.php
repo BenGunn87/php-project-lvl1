@@ -1,4 +1,5 @@
 <?php
+
 namespace Brain\Games\Cli;
 
 use function cli\line;
