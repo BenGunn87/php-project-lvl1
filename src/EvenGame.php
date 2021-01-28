@@ -49,9 +49,14 @@ function startGame()
     $name = askName();
     line('Answer "%s" if the number is even, otherwise answer "%s".', getYesAnswer(), getNoAnswer());
     $correctAnswerCount = 0;
-    while ($correctAnswerCount < $maxCountCorrectAnswer) {
+    $isCorrect = true;
+    while ($correctAnswerCount < $maxCountCorrectAnswer && $isCorrect) {
         $isCorrect = askQuestion();
         $correctAnswerCount += $isCorrect ? 1 : 0;
     }
-    line('Congratulations, %s!', $name);
+    if ($isCorrect) {
+        line('Congratulations, %s!', $name);
+    } else {
+        line('Let\'s try again, %s!', $name);
+    }
 }
