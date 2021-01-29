@@ -11,7 +11,7 @@ const MAX_NUMBER = 30;
 const MIN_ELEM_COUNT = 5;
 const MAX_ELEM_COUNT = 10;
 
-function getProgression($firstElem, $delta, $elementsCount): array
+function getProgression(int $firstElem, int $delta, int $elementsCount): array
 {
     $arr = [];
     $currentElem = $firstElem;
@@ -24,7 +24,7 @@ function getProgression($firstElem, $delta, $elementsCount): array
 
 function getQuestionFn(): Closure
 {
-    return function () {
+    return function (): array {
         $firstElem = rand(MIN_NUMBER, MAX_NUMBER);
         $delta = rand(MIN_NUMBER, MAX_NUMBER);
         $elementsCount = rand(MIN_ELEM_COUNT, MAX_ELEM_COUNT);
@@ -33,7 +33,7 @@ function getQuestionFn(): Closure
         $correctAnswer = $progression[$unknownElemIndex];
         $progression[$unknownElemIndex] = '..';
         return [
-            'question' => "Question: ". implode(' ', $progression),
+            'question' => "Question: " . implode(' ', $progression),
             'correctAnswer' => $correctAnswer
         ];
     };
@@ -44,7 +44,7 @@ function getGameDescription(): string
     return 'What number is missing in the progression?';
 }
 
-function startProgressionGame()
+function startProgressionGame(): void
 {
     startGame(getGameDescription(), getQuestionFn());
 }

@@ -2,12 +2,14 @@
 
 namespace Brain\Games\Engine;
 
+use Closure;
+
 use function cli\line;
 use function cli\prompt;
 
 const NUMBER_OF_ANSWERS_TO_WIN = 3;
 
-function hello()
+function hello(): void
 {
     line('Welcome to the Brain Game!');
 }
@@ -19,9 +21,9 @@ function askName(): string
     return $name;
 }
 
-function checkAnswer($correctAnswer, $actualAnswer): array
+function checkAnswer(string $correctAnswer, string $actualAnswer): array
 {
-    if ((string) $correctAnswer === (string) $actualAnswer) {
+    if ($correctAnswer === $actualAnswer) {
         return [
             'isCorrect' => true,
             'phrase' => 'Correct!'
@@ -34,12 +36,12 @@ function checkAnswer($correctAnswer, $actualAnswer): array
     }
 }
 
-function printGameDescription($gameDescription)
+function printGameDescription(string $gameDescription): void
 {
     line($gameDescription);
 }
 
-function printClosingPhrase($isWin, $name)
+function printClosingPhrase(bool $isWin, string $name): void
 {
     if ($isWin) {
         line('Congratulations, %s!', $name);
@@ -48,7 +50,7 @@ function printClosingPhrase($isWin, $name)
     }
 }
 
-function startGame($gameDescription, $getQuestion)
+function startGame(string $gameDescription, Closure $getQuestion): void
 {
     hello();
     $name = askName();
@@ -60,7 +62,7 @@ function startGame($gameDescription, $getQuestion)
         ['question' => $question, 'correctAnswer' => $correctAnswer] = $getQuestion();
         line($question);
         $answer = prompt('Your answer');
-        ['isCorrect' => $isCorrect, 'phrase' => $phrase] = checkAnswer($correctAnswer, $answer);
+        ['isCorrect' => $isCorrect, 'phrase' => $phrase] = checkAnswer((string) $correctAnswer, $answer);
         line($phrase);
         $correctAnswerCount += 1;
     }

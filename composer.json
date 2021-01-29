@@ -1,7 +1,7 @@
 {
     "name": "hexlet/code",
     "description": "brain-games",
-    "type": "project",
+    "type": "library",
     "authors": [
         {
             "name": "BenGunn87",
@@ -20,7 +20,8 @@
         "bin/brain-even",
         "bin/brain-calc",
         "bin/brain-gcd",
-        "bin/brain-progression"
+        "bin/brain-progression",
+        "bin/brain-prime"
     ],
     "autoload": {
         "files": [
@@ -29,7 +30,8 @@
             "src/Games/EvenGame.php",
             "src/Games/CalcGame.php",
             "src/Games/GcdGame.php",
-            "src/Games/ProgressionGame.php"
+            "src/Games/ProgressionGame.php",
+            "src/Games/PrimeGame.php"
         ]
     },
     "scripts": {

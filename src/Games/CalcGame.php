@@ -32,7 +32,7 @@ function getOperations(): array
 }
 function getQuestionFn(): Closure
 {
-    return function () {
+    return function (): array {
         ['operation' => $operation, 'fn' => $fn] = getOperations();
         $firstOperand = rand(MIN_NUMBER, MAX_NUMBER);
         $secondOperand = rand(MIN_NUMBER, MAX_NUMBER);
@@ -49,7 +49,7 @@ function getGameDescription(): string
     return 'What is the result of the expression?';
 }
 
-function startCalcGame()
+function startCalcGame(): void
 {
     startGame(getGameDescription(), getQuestionFn());
 }
