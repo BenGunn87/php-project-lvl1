@@ -5,7 +5,11 @@
 
 brain-even example
 [![brain-even example](https://asciinema.org/a/oAnmcllDGzsHhePPtPDtMmKjx.svg)](https://asciinema.org/a/oAnmcllDGzsHhePPtPDtMmKjx)  
-[brain-calc example](https://asciinema.org/a/Sv49aAWFhuu9yg5fFZw3i8nVF)  
-[brain-gcd example](https://asciinema.org/a/IIwVXpZuHWqM11CzRfPNbYQRQ)  
-[brain-progression example](https://asciinema.org/a/yayTj4Yd26DCCyFQXgLmw36cx)  
-[brain-prime example](https://asciinema.org/a/iyWxfnmht6x13cQdbVRhhJ1MO)
+brain-calc example  
+[![brain-calc example](https://asciinema.org/a/Sv49aAWFhuu9yg5fFZw3i8nVF.svg)](https://asciinema.org/a/Sv49aAWFhuu9yg5fFZw3i8nVF)  
+brain-gcd example  
+[![brain-gcd example](https://asciinema.org/a/IIwVXpZuHWqM11CzRfPNbYQRQ.svg)](https://asciinema.org/a/IIwVXpZuHWqM11CzRfPNbYQRQ)   
+brain-progression example  
+[![brain-progression example](https://asciinema.org/a/yayTj4Yd26DCCyFQXgLmw36cx.svg)](https://asciinema.org/a/yayTj4Yd26DCCyFQXgLmw36cx)  
+brain-prime example  
+[![brain-prime example](https://asciinema.org/a/iyWxfnmht6x13cQdbVRhhJ1MO.svg)](https://asciinema.org/a/iyWxfnmht6x13cQdbVRhhJ1MO)
