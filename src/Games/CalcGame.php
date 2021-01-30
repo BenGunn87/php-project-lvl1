@@ -2,8 +2,6 @@
 
 namespace Brain\Games\Games\CalcGame;
 
-use Closure;
-
 use function Brain\Games\Engine\startGame;
 
 const MIN_NUMBER = 1;
@@ -30,7 +28,7 @@ function getOperations(): array
         'fn' => $operationsFn[$operation]
     ];
 }
-function getQuestionFn(): Closure
+function getQuestionFn(): callable
 {
     return function (): array {
         ['operation' => $operation, 'fn' => $fn] = getOperations();

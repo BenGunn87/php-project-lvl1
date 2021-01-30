@@ -2,8 +2,6 @@
 
 namespace Brain\Games\Engine;
 
-use Closure;
-
 use function cli\line;
 use function cli\prompt;
 
@@ -50,7 +48,7 @@ function printClosingPhrase(bool $isWin, string $name): void
     }
 }
 
-function startGame(string $gameDescription, Closure $getQuestion): void
+function startGame(string $gameDescription, callable $getQuestion): void
 {
     hello();
     $name = askName();

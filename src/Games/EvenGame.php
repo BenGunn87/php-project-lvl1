@@ -2,8 +2,6 @@
 
 namespace Brain\Games\Games\EvenGame;
 
-use Closure;
-
 use function Brain\Games\Engine\startGame;
 
 const ANSWER_YES = 'yes';
@@ -11,7 +9,7 @@ const ANSWER_NO = 'no';
 const MIN_NUMBER = 1;
 const MAX_NUMBER = 100;
 
-function getQuestionFn(): Closure
+function getQuestionFn(): callable
 {
     return function (): array {
         $questionNumber = rand(MIN_NUMBER, MAX_NUMBER);

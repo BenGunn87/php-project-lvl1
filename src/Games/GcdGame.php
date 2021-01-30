@@ -2,8 +2,6 @@
 
 namespace Brain\Games\Games\GcdGame;
 
-use Closure;
-
 use function Brain\Games\Engine\startGame;
 
 const MIN_NUMBER = 1;
@@ -21,7 +19,7 @@ function getGcd(int $a, int $b): int
     return $a > $b ? $b : $a;
 }
 
-function getQuestionFn(): Closure
+function getQuestionFn(): callable
 {
     return function (): array {
         $firstOperand = rand(MIN_NUMBER, MAX_NUMBER);

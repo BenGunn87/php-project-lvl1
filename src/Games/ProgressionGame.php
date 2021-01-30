@@ -2,8 +2,6 @@
 
 namespace Brain\Games\Games\ProgressionGame;
 
-use Closure;
-
 use function Brain\Games\Engine\startGame;
 
 const MIN_NUMBER = 1;
@@ -24,7 +22,7 @@ function getProgression(int $firstElem, int $delta, int $elementsCount): array
     return $arr;
 }
 
-function getQuestionFn(): Closure
+function getQuestionFn(): callable
 {
     return function (): array {
         $firstElem = rand(MIN_NUMBER, MAX_NUMBER);

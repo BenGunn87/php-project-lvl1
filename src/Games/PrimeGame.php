@@ -2,8 +2,6 @@
 
 namespace Brain\Games\Games\PrimeGame;
 
-use Closure;
-
 use function Brain\Games\Engine\startGame;
 
 const ANSWER_YES = 'yes';
@@ -22,7 +20,7 @@ function isPrime(int $number): bool
     return true;
 }
 
-function getQuestionFn(): Closure
+function getQuestionFn(): callable
 {
     return function (): array {
         $questionNumber = rand(MIN_NUMBER, MAX_NUMBER);
