@@ -18,7 +18,7 @@ function getQuestionFn(): Closure
         $isEven = $questionNumber % 2 === 0;
         $correctAnswer = $isEven ? ANSWER_YES : ANSWER_NO;
         return [
-            'question' => "Question: $questionNumber",
+            'question' => (string) $questionNumber,
             'correctAnswer' => $correctAnswer
         ];
     };

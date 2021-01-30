@@ -28,7 +28,7 @@ function getQuestionFn(): Closure
         $questionNumber = rand(MIN_NUMBER, MAX_NUMBER);
         $correctAnswer = isPrime($questionNumber) ? ANSWER_YES : ANSWER_NO;
         return [
-            'question' => "Question: $questionNumber",
+            'question' => (string) $questionNumber,
             'correctAnswer' => $correctAnswer
         ];
     };

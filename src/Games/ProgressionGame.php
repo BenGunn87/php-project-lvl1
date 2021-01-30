@@ -10,6 +10,8 @@ const MIN_NUMBER = 1;
 const MAX_NUMBER = 30;
 const MIN_ELEM_COUNT = 5;
 const MAX_ELEM_COUNT = 10;
+const UNKNOWN_ELEM_SUBSTITUTE = '..';
+
 
 function getProgression(int $firstElem, int $delta, int $elementsCount): array
 {
@@ -31,9 +33,9 @@ function getQuestionFn(): Closure
         $progression = getProgression($firstElem, $delta, $elementsCount);
         $unknownElemIndex = rand(0, $elementsCount - 1);
         $correctAnswer = $progression[$unknownElemIndex];
-        $progression[$unknownElemIndex] = '..';
+        $progression[$unknownElemIndex] = UNKNOWN_ELEM_SUBSTITUTE;
         return [
-            'question' => "Question: " . implode(' ', $progression),
+            'question' => implode(' ', $progression),
             'correctAnswer' => $correctAnswer
         ];
     };

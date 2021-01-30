@@ -28,7 +28,7 @@ function getQuestionFn(): Closure
         $secondOperand = rand(MIN_NUMBER, MAX_NUMBER);
 
         return [
-            'question' => "Question: $firstOperand $secondOperand",
+            'question' => "{$firstOperand} {$secondOperand}",
             'correctAnswer' => getGcd($firstOperand, $secondOperand)
         ];
     };

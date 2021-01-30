@@ -60,7 +60,7 @@ function startGame(string $gameDescription, Closure $getQuestion): void
     $isCorrect = true;
     while ($correctAnswerCount < NUMBER_OF_ANSWERS_TO_WIN && $isCorrect) {
         ['question' => $question, 'correctAnswer' => $correctAnswer] = $getQuestion();
-        line($question);
+        line("Question: {$question}");
         $answer = prompt('Your answer');
         ['isCorrect' => $isCorrect, 'phrase' => $phrase] = checkAnswer((string) $correctAnswer, $answer);
         line($phrase);

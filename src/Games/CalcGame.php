@@ -12,7 +12,7 @@ const OPERATIONS_CHARS = ['+', '-', '*'];
 
 function getOperations(): array
 {
-    $operations_fn = [
+    $operationsFn = [
         '+' => function ($a, $b) {
             return $a + $b;
         },
@@ -27,7 +27,7 @@ function getOperations(): array
     $operation = OPERATIONS_CHARS[$operationIndex];
     return [
         'operation' => $operation,
-        'fn' => $operations_fn[$operation]
+        'fn' => $operationsFn[$operation]
     ];
 }
 function getQuestionFn(): Closure
@@ -38,7 +38,7 @@ function getQuestionFn(): Closure
         $secondOperand = rand(MIN_NUMBER, MAX_NUMBER);
 
         return [
-            'question' => "Question: $firstOperand $operation $secondOperand",
+            'question' => "{$firstOperand} {$operation} {$secondOperand}",
             'correctAnswer' => $fn($firstOperand, $secondOperand)
         ];
     };
