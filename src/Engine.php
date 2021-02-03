@@ -5,15 +5,11 @@ namespace Brain\Games\Engine;
 use function cli\line;
 use function cli\prompt;
 
-const NUMBER_OF_ANSWERS_TO_WIN = 3;
-
-function hello(): void
-{
-    line('Welcome to the Brain Game!');
-}
+const COUNT_OF_ANSWERS_FOR_WIN = 3;
 
 function askName(): string
 {
+    line('Welcome to the Brain Game!');
     $name = prompt('May I have your name?');
     line("Hello, %s!", $name);
     return $name;
@@ -50,13 +46,12 @@ function printClosingPhrase(bool $isWin, string $name): void
 
 function startGame(string $gameDescription, callable $getQuestion): void
 {
-    hello();
     $name = askName();
     printGameDescription($gameDescription);
 
     $correctAnswerCount = 0;
     $isCorrect = true;
-    while ($correctAnswerCount < NUMBER_OF_ANSWERS_TO_WIN && $isCorrect) {
+    while ($correctAnswerCount < COUNT_OF_ANSWERS_FOR_WIN && $isCorrect) {
         ['question' => $question, 'correctAnswer' => $correctAnswer] = $getQuestion();
         line("Question: {$question}");
         $answer = prompt('Your answer');

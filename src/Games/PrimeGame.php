@@ -11,6 +11,9 @@ const MAX_NUMBER = 500;
 
 function isPrime(int $number): bool
 {
+    if ($number < 2) {
+        return false;
+    }
     $end = sqrt($number);
     for ($i = 2; $i <= $end; $i += 1) {
         if ($number % $i === 0) {
@@ -20,7 +23,7 @@ function isPrime(int $number): bool
     return true;
 }
 
-function getQuestionFn(): callable
+function getFnToGenerateQuestionAndAnswer(): callable
 {
     return function (): array {
         $questionNumber = rand(MIN_NUMBER, MAX_NUMBER);
@@ -39,5 +42,5 @@ function getGameDescription(): string
 
 function startPrimeGame(): void
 {
-    startGame(getGameDescription(), getQuestionFn());
+    startGame(getGameDescription(), getFnToGenerateQuestionAndAnswer());
 }

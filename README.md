@@ -3,7 +3,27 @@
 [![Actions Status](https://github.com/BenGunn87/php-project-lvl1/workflows/Linter/badge.svg)](https://github.com/BenGunn87/php-project-lvl1/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/036d17f4a3cf3b813a78/maintainability)](https://codeclimate.com/github/BenGunn87/php-project-lvl1/maintainability)
 
-brain-even example
+The project contains a set of simple console games  
+### Installation
+To install, run the command `make install`
+### Games  
+1. Even  
+   Determine if a number is even  
+   Command to run: `make brain-even`
+2. Calc  
+   Evaluate the expression
+   Command to run: `make brain-calc`
+3. Gcd  
+   Find the greatest common factor  
+   Command to run: `make brain-gcd`
+4. Progression  
+   Determine the missing number in the progression  
+   Command to run: `make brain-progression`
+5. Prime  
+   Determine if a number is prime  
+   Command to run: `make brain-prime`  
+### Example  
+brain-even example  
 [![brain-even example](https://asciinema.org/a/oAnmcllDGzsHhePPtPDtMmKjx.svg)](https://asciinema.org/a/oAnmcllDGzsHhePPtPDtMmKjx)  
 brain-calc example  
 [![brain-calc example](https://asciinema.org/a/Sv49aAWFhuu9yg5fFZw3i8nVF.svg)](https://asciinema.org/a/Sv49aAWFhuu9yg5fFZw3i8nVF)  

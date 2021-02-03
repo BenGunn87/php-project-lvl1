@@ -9,7 +9,7 @@ const ANSWER_NO = 'no';
 const MIN_NUMBER = 1;
 const MAX_NUMBER = 100;
 
-function getQuestionFn(): callable
+function getFnToGenerateQuestionAndAnswer(): callable
 {
     return function (): array {
         $questionNumber = rand(MIN_NUMBER, MAX_NUMBER);
@@ -29,5 +29,5 @@ function getGameDescription(): string
 
 function startEvenGame(): void
 {
-    startGame(getGameDescription(), getQuestionFn());
+    startGame(getGameDescription(), getFnToGenerateQuestionAndAnswer());
 }

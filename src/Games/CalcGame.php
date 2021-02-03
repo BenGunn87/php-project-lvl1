@@ -6,38 +6,41 @@ use function Brain\Games\Engine\startGame;
 
 const MIN_NUMBER = 1;
 const MAX_NUMBER = 100;
-const OPERATIONS_CHARS = ['+', '-', '*'];
+const PLUS = '+';
+const MINUS = '-';
+const MULTIPLY = '*';
+const OPERATIONS_CHARS = [PLUS, MINUS, MULTIPLY];
 
-function getOperations(): array
+function getOperations(int $operationIndex): array
 {
+    $operationChar = OPERATIONS_CHARS[$operationIndex];
     $operationsFn = [
-        '+' => function ($a, $b) {
+        PLUS => function ($a, $b) {
             return $a + $b;
         },
-        '-' => function ($a, $b) {
+        MINUS => function ($a, $b) {
             return $a - $b;
         },
-        '*' => function ($a, $b) {
+        MULTIPLY => function ($a, $b) {
             return $a * $b;
         },
     ];
-    $operationIndex = rand(0, count(OPERATIONS_CHARS) - 1);
-    $operation = OPERATIONS_CHARS[$operationIndex];
     return [
-        'operation' => $operation,
-        'fn' => $operationsFn[$operation]
+        'operation' => $operationChar,
+        'fn' => $operationsFn[$operationChar]
     ];
 }
-function getQuestionFn(): callable
+function getFnToGenerateQuestionAndAnswer(): callable
 {
     return function (): array {
-        ['operation' => $operation, 'fn' => $fn] = getOperations();
+        $operationIndex = rand(0, count(OPERATIONS_CHARS) - 1);
+        ['operation' => $operation, 'fn' => $fn] = getOperations($operationIndex);
         $firstOperand = rand(MIN_NUMBER, MAX_NUMBER);
         $secondOperand = rand(MIN_NUMBER, MAX_NUMBER);
 
         return [
             'question' => "{$firstOperand} {$operation} {$secondOperand}",
-            'correctAnswer' => $fn($firstOperand, $secondOperand)
+            'correctAnswer' => (string) $fn($firstOperand, $secondOperand)
         ];
     };
 }
@@ -49,5 +52,5 @@ function getGameDescription(): string
 
 function startCalcGame(): void
 {
-    startGame(getGameDescription(), getQuestionFn());
+    startGame(getGameDescription(), getFnToGenerateQuestionAndAnswer());
 }

@@ -13,16 +13,14 @@ const UNKNOWN_ELEM_SUBSTITUTE = '..';
 
 function getProgression(int $firstElem, int $delta, int $elementsCount): array
 {
-    $arr = [];
-    $currentElem = $firstElem;
+    $progression = [];
     for ($i = 0; $i < $elementsCount; $i += 1) {
-        $arr[] = $currentElem;
-        $currentElem = $currentElem + $delta;
+        $progression[] = $firstElem + $delta * $i;
     }
-    return $arr;
+    return $progression;
 }
 
-function getQuestionFn(): callable
+function getFnToGenerateQuestionAndAnswer(): callable
 {
     return function (): array {
         $firstElem = rand(MIN_NUMBER, MAX_NUMBER);
@@ -34,7 +32,7 @@ function getQuestionFn(): callable
         $progression[$unknownElemIndex] = UNKNOWN_ELEM_SUBSTITUTE;
         return [
             'question' => implode(' ', $progression),
-            'correctAnswer' => $correctAnswer
+            'correctAnswer' => (string) $correctAnswer
         ];
     };
 }
@@ -46,5 +44,5 @@ function getGameDescription(): string
 
 function startProgressionGame(): void
 {
-    startGame(getGameDescription(), getQuestionFn());
+    startGame(getGameDescription(), getFnToGenerateQuestionAndAnswer());
 }
