@@ -23,7 +23,7 @@ function isPrime(int $number): bool
     return true;
 }
 
-function getQuestionAndAnswerGenerator(): callable
+function getTaskGenerator(): callable
 {
     return function (): array {
         $question = rand(MIN_NUMBER, MAX_NUMBER);
@@ -42,5 +42,5 @@ function getGameDescription(): string
 
 function startPrimeGame(): void
 {
-    startGame(getGameDescription(), getQuestionAndAnswerGenerator());
+    startGame(getGameDescription(), getTaskGenerator());
 }

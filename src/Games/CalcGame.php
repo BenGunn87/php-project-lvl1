@@ -11,7 +11,7 @@ const MINUS = '-';
 const MULTIPLY = '*';
 const OPERATIONS_SYMBOLS = [PLUS, MINUS, MULTIPLY];
 
-function getQuestionAndAnswer(int $operationIndex, int $firstOperand, int $secondOperand): array
+function getTask(int $operationIndex, int $firstOperand, int $secondOperand): array
 {
     $operationSymbol = OPERATIONS_SYMBOLS[$operationIndex];
     $operations = [
@@ -30,13 +30,13 @@ function getQuestionAndAnswer(int $operationIndex, int $firstOperand, int $secon
         'correctAnswer' => (string) $operations[$operationSymbol]($firstOperand, $secondOperand)
     ];
 }
-function getQuestionAndAnswerGenerator(): callable
+function getTaskGenerator(): callable
 {
     return function (): array {
         $operationIndex = rand(0, count(OPERATIONS_SYMBOLS) - 1);
         $firstOperand = rand(MIN_NUMBER, MAX_NUMBER);
         $secondOperand = rand(MIN_NUMBER, MAX_NUMBER);
-        return getQuestionAndAnswer($operationIndex, $firstOperand, $secondOperand);
+        return getTask($operationIndex, $firstOperand, $secondOperand);
     };
 }
 
@@ -47,5 +47,5 @@ function getGameDescription(): string
 
 function startCalcGame(): void
 {
-    startGame(getGameDescription(), getQuestionAndAnswerGenerator());
+    startGame(getGameDescription(), getTaskGenerator());
 }

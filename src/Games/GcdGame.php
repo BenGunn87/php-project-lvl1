@@ -19,7 +19,7 @@ function getGcd(int $a, int $b): int
     return $a > $b ? $b : $a;
 }
 
-function getQuestionAndAnswerGenerator(): callable
+function getTaskGenerator(): callable
 {
     return function (): array {
         $firstOperand = rand(MIN_NUMBER, MAX_NUMBER);
@@ -39,5 +39,5 @@ function getGameDescription(): string
 
 function startGcdGame(): void
 {
-    startGame(getGameDescription(), getQuestionAndAnswerGenerator());
+    startGame(getGameDescription(), getTaskGenerator());
 }
