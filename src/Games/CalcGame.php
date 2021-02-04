@@ -9,12 +9,12 @@ const MAX_NUMBER = 100;
 const PLUS = '+';
 const MINUS = '-';
 const MULTIPLY = '*';
-const OPERATIONS_CHARS = [PLUS, MINUS, MULTIPLY];
+const OPERATIONS_SYMBOLS = [PLUS, MINUS, MULTIPLY];
 
-function getOperations(int $operationIndex): array
+function getQuestionAndAnswer(int $operationIndex, int $firstOperand, int $secondOperand): array
 {
-    $operationChar = OPERATIONS_CHARS[$operationIndex];
-    $operationsFn = [
+    $operationSymbol = OPERATIONS_SYMBOLS[$operationIndex];
+    $operations = [
         PLUS => function ($a, $b) {
             return $a + $b;
         },
@@ -26,22 +26,17 @@ function getOperations(int $operationIndex): array
         },
     ];
     return [
-        'operation' => $operationChar,
-        'fn' => $operationsFn[$operationChar]
+        'question' => "{$firstOperand} {$operationSymbol} {$secondOperand}",
+        'correctAnswer' => (string) $operations[$operationSymbol]($firstOperand, $secondOperand)
     ];
 }
-function getFnToGenerateQuestionAndAnswer(): callable
+function getQuestionAndAnswerGenerator(): callable
 {
     return function (): array {
-        $operationIndex = rand(0, count(OPERATIONS_CHARS) - 1);
-        ['operation' => $operation, 'fn' => $fn] = getOperations($operationIndex);
+        $operationIndex = rand(0, count(OPERATIONS_SYMBOLS) - 1);
         $firstOperand = rand(MIN_NUMBER, MAX_NUMBER);
         $secondOperand = rand(MIN_NUMBER, MAX_NUMBER);
-
-        return [
-            'question' => "{$firstOperand} {$operation} {$secondOperand}",
-            'correctAnswer' => (string) $fn($firstOperand, $secondOperand)
-        ];
+        return getQuestionAndAnswer($operationIndex, $firstOperand, $secondOperand);
     };
 }
 
@@ -52,5 +47,5 @@ function getGameDescription(): string
 
 function startCalcGame(): void
 {
-    startGame(getGameDescription(), getFnToGenerateQuestionAndAnswer());
+    startGame(getGameDescription(), getQuestionAndAnswerGenerator());
 }

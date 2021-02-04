@@ -9,14 +9,14 @@ const ANSWER_NO = 'no';
 const MIN_NUMBER = 1;
 const MAX_NUMBER = 100;
 
-function getFnToGenerateQuestionAndAnswer(): callable
+function getQuestionAndAnswerGenerator(): callable
 {
     return function (): array {
-        $questionNumber = rand(MIN_NUMBER, MAX_NUMBER);
-        $isEven = $questionNumber % 2 === 0;
+        $question = rand(MIN_NUMBER, MAX_NUMBER);
+        $isEven = $question % 2 === 0;
         $correctAnswer = $isEven ? ANSWER_YES : ANSWER_NO;
         return [
-            'question' => (string) $questionNumber,
+            'question' => (string) $question,
             'correctAnswer' => $correctAnswer
         ];
     };
@@ -29,5 +29,5 @@ function getGameDescription(): string
 
 function startEvenGame(): void
 {
-    startGame(getGameDescription(), getFnToGenerateQuestionAndAnswer());
+    startGame(getGameDescription(), getQuestionAndAnswerGenerator());
 }

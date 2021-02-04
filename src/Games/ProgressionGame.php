@@ -20,7 +20,7 @@ function getProgression(int $firstElem, int $delta, int $elementsCount): array
     return $progression;
 }
 
-function getFnToGenerateQuestionAndAnswer(): callable
+function getQuestionAndAnswerGenerator(): callable
 {
     return function (): array {
         $firstElem = rand(MIN_NUMBER, MAX_NUMBER);
@@ -44,5 +44,5 @@ function getGameDescription(): string
 
 function startProgressionGame(): void
 {
-    startGame(getGameDescription(), getFnToGenerateQuestionAndAnswer());
+    startGame(getGameDescription(), getQuestionAndAnswerGenerator());
 }

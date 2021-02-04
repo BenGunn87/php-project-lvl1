@@ -44,7 +44,7 @@ function printClosingPhrase(bool $isWin, string $name): void
     }
 }
 
-function startGame(string $gameDescription, callable $getQuestion): void
+function startGame(string $gameDescription, callable $getQuestionAndAnswer): void
 {
     $name = askName();
     printGameDescription($gameDescription);
@@ -52,7 +52,7 @@ function startGame(string $gameDescription, callable $getQuestion): void
     $correctAnswerCount = 0;
     $isCorrect = true;
     while ($correctAnswerCount < COUNT_OF_ANSWERS_FOR_WIN && $isCorrect) {
-        ['question' => $question, 'correctAnswer' => $correctAnswer] = $getQuestion();
+        ['question' => $question, 'correctAnswer' => $correctAnswer] = $getQuestionAndAnswer();
         line("Question: {$question}");
         $answer = prompt('Your answer');
         ['isCorrect' => $isCorrect, 'phrase' => $phrase] = checkAnswer((string) $correctAnswer, $answer);

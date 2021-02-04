@@ -23,13 +23,13 @@ function isPrime(int $number): bool
     return true;
 }
 
-function getFnToGenerateQuestionAndAnswer(): callable
+function getQuestionAndAnswerGenerator(): callable
 {
     return function (): array {
-        $questionNumber = rand(MIN_NUMBER, MAX_NUMBER);
-        $correctAnswer = isPrime($questionNumber) ? ANSWER_YES : ANSWER_NO;
+        $question = rand(MIN_NUMBER, MAX_NUMBER);
+        $correctAnswer = isPrime($question) ? ANSWER_YES : ANSWER_NO;
         return [
-            'question' => (string) $questionNumber,
+            'question' => (string) $question,
             'correctAnswer' => $correctAnswer
         ];
     };
@@ -42,5 +42,5 @@ function getGameDescription(): string
 
 function startPrimeGame(): void
 {
-    startGame(getGameDescription(), getFnToGenerateQuestionAndAnswer());
+    startGame(getGameDescription(), getQuestionAndAnswerGenerator());
 }
