@@ -1,11 +1,12 @@
 <?php
 
-namespace Brain\Games\Games\GcdGame;
+namespace Brain\Games\Games\Gcd;
 
-use function Brain\Games\Engine\startGame;
+use function Brain\Games\Engine\playGame;
 
 const MIN_NUMBER = 1;
 const MAX_NUMBER = 50;
+const GAME_DESCRIPTION = 'Find the greatest common divisor of given numbers.';
 
 function getGcd(int $a, int $b): int
 {
@@ -32,12 +33,7 @@ function getTaskGenerator(): callable
     };
 }
 
-function getGameDescription(): string
-{
-    return 'Find the greatest common divisor of given numbers.';
-}
-
 function startGcdGame(): void
 {
-    startGame(getGameDescription(), getTaskGenerator());
+    playGame(GAME_DESCRIPTION, getTaskGenerator());
 }

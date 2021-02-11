@@ -1,8 +1,8 @@
 <?php
 
-namespace Brain\Games\Games\CalcGame;
+namespace Brain\Games\Games\Calc;
 
-use function Brain\Games\Engine\startGame;
+use function Brain\Games\Engine\playGame;
 
 const MIN_NUMBER = 1;
 const MAX_NUMBER = 100;
@@ -10,6 +10,7 @@ const PLUS = '+';
 const MINUS = '-';
 const MULTIPLY = '*';
 const OPERATIONS_SYMBOLS = [PLUS, MINUS, MULTIPLY];
+const GAME_DESCRIPTION = 'What is the result of the expression?';
 
 function getTask(int $operationIndex, int $firstOperand, int $secondOperand): array
 {
@@ -40,12 +41,7 @@ function getTaskGenerator(): callable
     };
 }
 
-function getGameDescription(): string
-{
-    return 'What is the result of the expression?';
-}
-
 function startCalcGame(): void
 {
-    startGame(getGameDescription(), getTaskGenerator());
+    playGame(GAME_DESCRIPTION, getTaskGenerator());
 }

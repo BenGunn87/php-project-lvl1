@@ -1,14 +1,15 @@
 <?php
 
-namespace Brain\Games\Games\ProgressionGame;
+namespace Brain\Games\Games\Progression;
 
-use function Brain\Games\Engine\startGame;
+use function Brain\Games\Engine\playGame;
 
 const MIN_NUMBER = 1;
 const MAX_NUMBER = 30;
 const MIN_ELEM_COUNT = 5;
 const MAX_ELEM_COUNT = 10;
 const UNKNOWN_ELEM_SUBSTITUTE = '..';
+const GAME_DESCRIPTION = 'What number is missing in the progression?';
 
 
 function getProgression(int $firstElem, int $delta, int $elementsCount): array
@@ -37,12 +38,7 @@ function getTaskGenerator(): callable
     };
 }
 
-function getGameDescription(): string
-{
-    return 'What number is missing in the progression?';
-}
-
 function startProgressionGame(): void
 {
-    startGame(getGameDescription(), getTaskGenerator());
+    playGame(GAME_DESCRIPTION, getTaskGenerator());
 }

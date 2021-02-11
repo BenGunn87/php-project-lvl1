@@ -1,13 +1,14 @@
 <?php
 
-namespace Brain\Games\Games\EvenGame;
+namespace Brain\Games\Games\Even;
 
-use function Brain\Games\Engine\startGame;
+use function Brain\Games\Engine\playGame;
 
 const ANSWER_YES = 'yes';
 const ANSWER_NO = 'no';
 const MIN_NUMBER = 1;
 const MAX_NUMBER = 100;
+const GAME_DESCRIPTION = 'Answer "' . ANSWER_YES . '" if the number is even, otherwise answer "' . ANSWER_NO . '".';
 
 function getTaskGenerator(): callable
 {
@@ -22,12 +23,7 @@ function getTaskGenerator(): callable
     };
 }
 
-function getGameDescription(): string
-{
-    return 'Answer "' . ANSWER_YES . '" if the number is even, otherwise answer "' . ANSWER_NO . '".';
-}
-
 function startEvenGame(): void
 {
-    startGame(getGameDescription(), getTaskGenerator());
+    playGame(GAME_DESCRIPTION, getTaskGenerator());
 }

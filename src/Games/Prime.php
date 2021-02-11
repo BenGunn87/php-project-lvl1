@@ -1,13 +1,14 @@
 <?php
 
-namespace Brain\Games\Games\PrimeGame;
+namespace Brain\Games\Games\Prime;
 
-use function Brain\Games\Engine\startGame;
+use function Brain\Games\Engine\playGame;
 
 const ANSWER_YES = 'yes';
 const ANSWER_NO = 'no';
 const MIN_NUMBER = 1;
 const MAX_NUMBER = 500;
+const GAME_DESCRIPTION = 'Answer "' . ANSWER_YES . '" if the number is prime. Otherwise answer "' . ANSWER_NO . '".';
 
 function isPrime(int $number): bool
 {
@@ -35,12 +36,7 @@ function getTaskGenerator(): callable
     };
 }
 
-function getGameDescription(): string
-{
-    return 'Answer "' . ANSWER_YES . '" if the number is prime. Otherwise answer "' . ANSWER_NO . '".';
-}
-
 function startPrimeGame(): void
 {
-    startGame(getGameDescription(), getTaskGenerator());
+    playGame(GAME_DESCRIPTION, getTaskGenerator());
 }
